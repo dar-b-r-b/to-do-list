@@ -1,7 +1,10 @@
+import { Flex, Heading } from "@chakra-ui/react";
+
 export function Header() {
-    return (
-    <header className="flex justify-center">
-      <h1 className="mt-3 sofadi-one-regular head"> ToDo</h1>
-    </header>
-    )
- }
+  return (
+    <Flex justify="center" m={3} color="blue.900"><Heading fontSize="5xl">My ToDo list</Heading></Flex>
+
+
+
+  )
+}
