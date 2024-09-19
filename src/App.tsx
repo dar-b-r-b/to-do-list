@@ -3,6 +3,8 @@ import { Header } from './Header';
 import { Date } from './Date';
 import { InputGroup } from './InputGroup';
 import { Filter } from './Filter';
+import { TaskList } from './TaskList';
+import { Stikers } from './Stikers';
 
 
 function App() {
@@ -11,8 +13,10 @@ function App() {
       <Header />
       <Date />
       <InputGroup />
-      <Filter/>
-      </>
+      <Filter />
+      <TaskList />
+      <Stikers />
+    </>
   );
 }
 
