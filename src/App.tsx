@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Header } from './Header';
+import { Date } from './Date';
+import { InputGroup } from './InputGroup';
+import { Filter } from './Filter';
+import { TaskList } from './TaskList';
+import { Stikers } from './Stikers';
+import { useState } from 'react';
 
-function App() {
+export interface Task { task: string, isDone: boolean }
+
+
+const App = () => {
+  const tasks: Task[] = [{ task: 'кошку кормит', isDone: false }, { task: 'завтракат', isDone: false },
+  { task: 'кошку гладит', isDone: false }];
+
+  const [inputTask, setInputTask] = useState<string>('');
+  const [newTasks, setNewTasks] = useState<Task[]>(tasks);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Date />
+      <InputGroup inputTask={inputTask} setInputTask={setInputTask} newTasks={newTasks} setNewTasks={setNewTasks} />
+      <Filter />
+      <TaskList newTasks={newTasks} />
+      <Stikers />
+    </>
   );
 }
 
