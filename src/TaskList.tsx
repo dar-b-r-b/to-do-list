@@ -1,16 +1,19 @@
 import { Checkbox, ListItem, UnorderedList, Button } from '@chakra-ui/react'
+import { Task } from './App'
 
-export function TaskList() {
+interface TaskListProps {
+    newTasks: Task[];
+}
 
-    const tasks = ['кошку кормит', 'завтракат', 'кошку гладит', 'бегит', 'вязат', 'пресс качат', 'попу мыт', 'спат',]
+export const TaskList = ({ newTasks }: TaskListProps) => {
 
     return (<>
         <UnorderedList styleType="' '" mt='5' ml='5%'>
-            {tasks.map((t) => {
+            {newTasks.map((t: any) => {
                 return (
                     <ListItem mb='3'>
                         <Checkbox iconColor='green.500' colorScheme='white' iconSize='1rem'>
-                            {t}
+                            {t.task}
                         </Checkbox>
                         <Button colorScheme='red' variant='link' size='sm'>
                             x
