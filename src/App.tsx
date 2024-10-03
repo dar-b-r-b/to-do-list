@@ -7,23 +7,21 @@ import { TaskList } from './TaskList';
 import { Stikers } from './Stikers';
 import { useState } from 'react';
 
-export interface Task { task: string, isDone: boolean }
-
+export interface Task { id: number, task: string, isDone: boolean };
 
 const App = () => {
-  const tasks: Task[] = [{ task: 'кошку кормит', isDone: false }, { task: 'завтракат', isDone: false },
-  { task: 'кошку гладит', isDone: false }];
-
-  const [inputTask, setInputTask] = useState<string>('');
-  const [newTasks, setNewTasks] = useState<Task[]>(tasks);
+  const [id, setId] = useState<number>(0);
+  const tasks: Task[] = [{ id: 12, task: 'кошку кормит', isDone: false }, { id: 11, task: 'завтракат', isDone: true }];
+  const [taskCollection, setTaskCollection] = useState<Task[]>(tasks);
+  const [selectedStatus, setSelectedStatus] = useState('Все');
 
   return (
     <>
       <Header />
       <Date />
-      <InputGroup inputTask={inputTask} setInputTask={setInputTask} newTasks={newTasks} setNewTasks={setNewTasks} />
-      <Filter />
-      <TaskList newTasks={newTasks} />
+      <InputGroup taskCollection={taskCollection} setTaskCollection={setTaskCollection} id={id} setId={setId} />
+      <Filter selectedStatus={selectedStatus} setSelectedStatus={setSelectedStatus} />
+      <TaskList taskCollection={taskCollection} setTaskCollection={setTaskCollection} selectedStatus={selectedStatus} />
       <Stikers />
     </>
   );
